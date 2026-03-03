@@ -1,8 +1,4 @@
-// ===============================
-// PERSONAL EXPENSE TRACKER
-// ===============================
 
-// Danh mục hợp lệ
 const VALID_CATEGORIES = [
   "Lương",
   "Thưởng",
@@ -14,9 +10,6 @@ const VALID_CATEGORIES = [
   "Khác"
 ];
 
-// ===============================
-// 1. KHỞI TẠO DỮ LIỆU MẪU
-// ===============================
 let transactions = [
   { id: 1, description: "Lương tháng 1", amount: 15000000, type: "Thu nhập", category: "Lương", date: "2026-01-05", note: "" },
   { id: 2, description: "Ăn tối nhà hàng", amount: -450000, type: "Chi tiêu", category: "Ăn uống", date: "2026-01-10", note: "Sinh nhật bạn" },
@@ -28,9 +21,6 @@ let transactions = [
   { id: 8, description: "Freelance", amount: 3000000, type: "Thu nhập", category: "Khác", date: "2026-03-01", note: "Làm thêm" }
 ];
 
-// ===============================
-// VALIDATION
-// ===============================
 function isValidDate(date) {
   return /^\d{4}-\d{2}-\d{2}$/.test(date);
 }
@@ -42,9 +32,6 @@ function normalizeType(type) {
   return null;
 }
 
-// ===============================
-// 2. XEM TẤT CẢ
-// ===============================
 function viewAll() {
   if (transactions.length === 0) {
     alert("Danh sách trống.");
@@ -58,9 +45,6 @@ function viewAll() {
   });
 }
 
-// ===============================
-// 3. THÊM GIAO DỊCH
-// ===============================
 function addTransaction() {
   let id = +prompt("Nhập ID:");
   if (transactions.some(t => t.id === id)) {
@@ -106,9 +90,6 @@ function addTransaction() {
   alert(`Đã thêm giao dịch ${description}`);
 }
 
-// ===============================
-// 4. XÓA
-// ===============================
 function removeTransaction() {
   let id = +prompt("Nhập ID cần xóa:");
   let index = transactions.findIndex(t => t.id === id);
@@ -125,9 +106,6 @@ function removeTransaction() {
   }
 }
 
-// ===============================
-// 5. SỬA
-// ===============================
 function updateTransaction() {
   let id = +prompt("Nhập ID cần sửa:");
   let t = transactions.find(t => t.id === id);
@@ -157,9 +135,6 @@ function updateTransaction() {
   alert(`Đã cập nhật giao dịch ID ${id}`);
 }
 
-// ===============================
-// 6. TÌM KIẾM
-// ===============================
 function searchTransactions() {
   let keyword = prompt("Nhập từ khóa:");
   let minAmount = +prompt("Nhập |amount| tối thiểu (có thể bỏ qua):") || 0;
@@ -178,9 +153,6 @@ function searchTransactions() {
   console.table(result);
 }
 
-// ===============================
-// 7. LỌC
-// ===============================
 function filterTransactions() {
   let choice = prompt("Lọc theo: 1.Type  2.Category");
 
@@ -205,9 +177,6 @@ function filterTransactions() {
   alert(`Tổng tiền: ${total}\nSố lượng: ${result.length}`);
 }
 
-// ===============================
-// 8. SẮP XẾP
-// ===============================
 function sortTransactions() {
   let choice = prompt("1. Theo ngày mới nhất\n2. Theo |amount| giảm dần");
 
@@ -222,9 +191,6 @@ function sortTransactions() {
   console.table(copy);
 }
 
-// ===============================
-// 9. BÁO CÁO
-// ===============================
 function generateReport() {
   let totalIncome = transactions
     .filter(t => t.amount > 0)
@@ -275,9 +241,6 @@ Tất cả giao dịch có note? ${allHaveNote ? "Có" : "Không"}
 `);
 }
 
-// ===============================
-// MENU
-// ===============================
 function startApp() {
   while (true) {
     let choice = prompt(`
@@ -307,5 +270,6 @@ QUẢN LÝ THU CHI CÁ NHÂN
     }
   }
 }
+
 
 startApp();
